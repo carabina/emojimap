@@ -13,6 +13,11 @@
 		0727BEA92004D37A00816A61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0727BEA82004D37A00816A61 /* Assets.xcassets */; };
 		0727BEAC2004D37A00816A61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0727BEAA2004D37A00816A61 /* LaunchScreen.storyboard */; };
 		0727BEB72004D37A00816A61 /* EmojiMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0727BEB62004D37A00816A61 /* EmojiMapTests.swift */; };
+		0727BEC22004D56900816A61 /* EmojiMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0727BEC12004D56900816A61 /* EmojiMap.swift */; };
+		0727BEC82004D60600816A61 /* emojis-en.json in Resources */ = {isa = PBXBuildFile; fileRef = 0727BEC42004D60600816A61 /* emojis-en.json */; };
+		0727BEC92004D60600816A61 /* emojis-es.json in Resources */ = {isa = PBXBuildFile; fileRef = 0727BEC52004D60600816A61 /* emojis-es.json */; };
+		0727BECA2004D60600816A61 /* emojis-de.json in Resources */ = {isa = PBXBuildFile; fileRef = 0727BEC62004D60600816A61 /* emojis-de.json */; };
+		0727BECB2004D60600816A61 /* emojis-fr.json in Resources */ = {isa = PBXBuildFile; fileRef = 0727BEC72004D60600816A61 /* emojis-fr.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +41,11 @@
 		0727BEB22004D37A00816A61 /* EmojiMapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EmojiMapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0727BEB62004D37A00816A61 /* EmojiMapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMapTests.swift; sourceTree = "<group>"; };
 		0727BEB82004D37A00816A61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0727BEC12004D56900816A61 /* EmojiMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMap.swift; sourceTree = "<group>"; };
+		0727BEC42004D60600816A61 /* emojis-en.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "emojis-en.json"; sourceTree = "<group>"; };
+		0727BEC52004D60600816A61 /* emojis-es.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "emojis-es.json"; sourceTree = "<group>"; };
+		0727BEC62004D60600816A61 /* emojis-de.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "emojis-de.json"; sourceTree = "<group>"; };
+		0727BEC72004D60600816A61 /* emojis-fr.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "emojis-fr.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +89,7 @@
 			children = (
 				0727BEA12004D37A00816A61 /* AppDelegate.swift */,
 				0727BEA32004D37A00816A61 /* ViewController.swift */,
+				0727BEC32004D5E000816A61 /* EmojiMap */,
 				0727BEA52004D37A00816A61 /* Main.storyboard */,
 				0727BEA82004D37A00816A61 /* Assets.xcassets */,
 				0727BEAA2004D37A00816A61 /* LaunchScreen.storyboard */,
@@ -94,6 +105,18 @@
 				0727BEB82004D37A00816A61 /* Info.plist */,
 			);
 			path = EmojiMapTests;
+			sourceTree = "<group>";
+		};
+		0727BEC32004D5E000816A61 /* EmojiMap */ = {
+			isa = PBXGroup;
+			children = (
+				0727BEC12004D56900816A61 /* EmojiMap.swift */,
+				0727BEC62004D60600816A61 /* emojis-de.json */,
+				0727BEC42004D60600816A61 /* emojis-en.json */,
+				0727BEC52004D60600816A61 /* emojis-es.json */,
+				0727BEC72004D60600816A61 /* emojis-fr.json */,
+			);
+			path = EmojiMap;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,8 +203,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0727BEAC2004D37A00816A61 /* LaunchScreen.storyboard in Resources */,
+				0727BECB2004D60600816A61 /* emojis-fr.json in Resources */,
+				0727BECA2004D60600816A61 /* emojis-de.json in Resources */,
+				0727BEC82004D60600816A61 /* emojis-en.json in Resources */,
 				0727BEA92004D37A00816A61 /* Assets.xcassets in Resources */,
 				0727BEA72004D37A00816A61 /* Main.storyboard in Resources */,
+				0727BEC92004D60600816A61 /* emojis-es.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,6 +227,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0727BEA42004D37A00816A61 /* ViewController.swift in Sources */,
+				0727BEC22004D56900816A61 /* EmojiMap.swift in Sources */,
 				0727BEA22004D37A00816A61 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
