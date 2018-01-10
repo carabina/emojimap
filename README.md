@@ -19,8 +19,8 @@ Emoji Map is a lightweight library to map Strings to Emojis, similar to the pred
 
 ## 👩‍🎓 Requirements
 
-- iOS 11.0+
-- Xcode 8+
+- iOS 10.0+
+- Xcode 9+
 
 ## 🔧 Installation
 
@@ -41,6 +41,8 @@ pod 'Emojimap'
 ## 🚀 Usage example
 
 ```swift
+import Emojimap
+
 let mapping = EmojiMap()
 for match in mapping.getMatchesFor("Dog Elephant Apple") {
     print(match.emoji)
