@@ -14,10 +14,10 @@ public typealias WordToEmojiMapping = [String : [String]]
 /// `Match` class keeps information about a single word that can be replaced with an emoji.
 public struct Match {
     
-    let string: String
-    let emoji: String
+    public let string: String
+    public let emoji: String
     
-    init(string: String, emoji: String) {
+    public init(string: String, emoji: String) {
         self.string = string
         self.emoji = emoji
     }
@@ -25,7 +25,9 @@ public struct Match {
 
 
 /// Tool to get the possible match from a word to an emoji.
-public class EmojiMap {
+open class EmojiMap {
+    
+    public init() {}
     
     /// Database of emojis in the user language
     lazy var mapping = self.defaultTextToEmojiMapping()
@@ -54,7 +56,7 @@ public class EmojiMap {
         // Return output
         return outPut
     }
-        
+    
     /// Search for the emoji db in the current language of the user. Currently supported only EN, DE, FR and ES
     ///
     /// - Returns: Mapping of the regular text to emoji characters
@@ -74,7 +76,7 @@ public class EmojiMap {
                 mapping[key]?.append(value)
             }
         }
-
+        
         // Order the json in a dictionary
         for (key, value) in emojiDataBase() {
             if let key = key as? String,
@@ -109,13 +111,22 @@ public class EmojiMap {
         pre = "-" + pre
         
         // Search for file in main bundle
-        guard let file = Bundle(for: EmojiMap.self).path(forResource: "EmojiDataBase.bundle/emojis" + pre, ofType: "json"),
+        if let file = Bundle(for: EmojiMap.self).path(forResource: "EmojiDataBase.bundle/emojis" + pre, ofType: "json"),
             let data = try? Data(contentsOf: URL(fileURLWithPath: file)),
             let json = try? JSONSerialization.jsonObject(with: data, options: []),
-            let jsonDictionary = json as? NSDictionary else {
+            let jsonDictionary = json as? NSDictionary {
+                return jsonDictionary
+        }
+        
+        // Search for file in main bundle
+        guard let podfile = Bundle(for: EmojiMap.self).path(forResource: "Emojimap.bundle/emojis" + pre, ofType: "json"),
+            let poddata = try? Data(contentsOf: URL(fileURLWithPath: podfile)),
+            let podjson = try? JSONSerialization.jsonObject(with: poddata, options: []),
+            let podjsonDictionary = podjson as? NSDictionary else {
                 print("Error finding the emoji for the language \(pre)")
                 return [:]
         }
-        return jsonDictionary
+        return podjsonDictionary
     }
 }
+

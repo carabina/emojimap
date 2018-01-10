@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'Emojimap'
-  s.version          = '0.1.2'
+  s.version          = '0.1.3'
   s.summary          = 'Lightweight library to map Strings to Emojis.'
 
   s.description      = <<-DESC
