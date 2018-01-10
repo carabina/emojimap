@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'Emojimap'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = 'Lightweight library to map Strings to Emojis.'
 
   s.description      = <<-DESC
@@ -12,7 +12,7 @@ This fantastic library allow you to map strings to emojis, similar to the iOS ke
   s.author           = { 'Matias' => 'contact@matiasvillaverde.com' }
   s.source           = { :git => 'https://github.com/matiasvillaverde/emojimap.git', :tag => s.version.to_s }
 
-  s.ios.deployment_target = '11.0'
+  s.ios.deployment_target = '10.0'
   s.source_files = 'Emojimap/EmojiMap/*{json,swift}'
 
 end
