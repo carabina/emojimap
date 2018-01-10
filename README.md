@@ -25,7 +25,13 @@ Emoji Map is a lightweight library to map Strings to Emojis, similar to the pred
 ## 🔧 Installation
 
 #### CocoaPods
-Comming soon...
+You can use [CocoaPods](http://cocoapods.org/) to install `EmojiMap` by adding it to your `Podfile`:
+
+```ruby
+platform :ios, '10.0'
+use_frameworks!
+pod 'Emojimap'
+```
 
 #### Manually
 1. Download and drop ```EmojiMap.swift``` in your project.
@@ -45,7 +51,7 @@ for match in mapping.getMatchesFor("Dog Elephant Apple") {
 
 ## 🤗 Contribute
 
-We would love you for the contribution to **EmojiMap**, check the ``LICENSE`` file for more info.
+We would love you to contribute to **EmojiMap**, check the ``LICENSE`` file for more info.
 
 ## 🙌 Credits
 

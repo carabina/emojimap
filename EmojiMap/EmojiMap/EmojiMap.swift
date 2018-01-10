@@ -34,42 +34,27 @@ public class EmojiMap {
     ///
     /// - Parameter inputString: String in EN, DE, FR or ES
     /// - Returns: array of Matches that contains the emoji and the word
-    func getMatchesFor(_ inputString: String) -> [Match] {
+    public func getMatchesFor(_ inputString: String) -> [Match] {
         
-        // Output array
+        // Output array.
         var outPut = [Match]()
         
-        // Language
-        let fullLanguage = Locale.preferredLanguages[0]
-        
-        // Tagger using NSLinguisticTagger
-        let options = NSLinguisticTagger.Options.omitWhitespace.rawValue | NSLinguisticTagger.Options.joinNames.rawValue
-        let tagger = NSLinguisticTagger(tagSchemes: NSLinguisticTagger.availableTagSchemes(forLanguage: fullLanguage), options: Int(options))
-        tagger.string = inputString
-        
-        // Enumerate the string to get the words
-        let range = NSRange(location: 0, length: inputString.utf16.count)
-        
-        tagger.enumerateTags(in: range, scheme: .nameTypeOrLexicalClass, options: NSLinguisticTagger.Options(rawValue: options)) { tag, tokenRange, sentenceRange, stop in
-            
-            // Get Token
-            guard let range = Range(tokenRange, in: inputString) else { return }
-            let token = inputString[range]
+        // Separe the string in words.
+        for word in inputString.lowercased().components(separatedBy: " ") {
             
             // Get match searching on emoji db
-            if let mappeds = mapping[(token as NSString).lowercased] {
-                for mapped in mappeds {
-                    let match = Match(string: token as NSString as String, emoji: mapped as String)
+            if let matches = mapping[word] {
+                for mapped in matches {
+                    let match = Match(string: word, emoji: mapped)
                     outPut.append(match)
                 }
             }
-            
         }
         
         // Return output
         return outPut
     }
-    
+        
     /// Search for the emoji db in the current language of the user. Currently supported only EN, DE, FR and ES
     ///
     /// - Returns: Mapping of the regular text to emoji characters
