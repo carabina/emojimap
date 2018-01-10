@@ -74,23 +74,9 @@ public class EmojiMap {
                 mapping[key]?.append(value)
             }
         }
-        
-        // Language
-        let fullLanguage = Locale.preferredLanguages[0]
-        var pre = String(fullLanguage.prefix(2))
-        pre = "-" + pre
-        
-        // Search for file
-        guard let file = Bundle.main.url(forResource: "emojis" + pre, withExtension: "json"),
-            let data = try? Data(contentsOf: file),
-            let json = try? JSONSerialization.jsonObject(with: data, options: []),
-            let jsonDictionary = json as? NSDictionary else {
-                print("Error finding the emoji for the language \(pre)")
-                return [:]
-        }
-        
+
         // Order the json in a dictionary
-        for (key, value) in jsonDictionary {
+        for (key, value) in emojiDataBase() {
             if let key = key as? String,
                 let dictionary = value as? Dictionary<String, AnyObject>,
                 let emojiCharacter = dictionary["char"] as? String {
@@ -109,5 +95,35 @@ public class EmojiMap {
         }
         
         return mapping
+    }
+    
+    
+    /// Search for the emoji JSON db in main or pod bundle
+    ///
+    /// - Returns: returns a dictionary with the JSON content.
+    func emojiDataBase() -> NSDictionary {
+        
+        // Language
+        let fullLanguage = Locale.preferredLanguages[0]
+        var pre = String(fullLanguage.prefix(2))
+        pre = "-" + pre
+        
+        // Search for file in main bundle
+        if let file = Bundle.main.url(forResource: "emojis" + pre, withExtension: "json"),
+            let data = try? Data(contentsOf: file),
+            let json = try? JSONSerialization.jsonObject(with: data, options: []),
+            let jsonDictionary = json as? NSDictionary {
+            return jsonDictionary
+        }
+
+        // Search for file in pod bundle
+        guard let podfile = Bundle(for: EmojiMap.self).path(forResource: "Emojimap.bundle/emojis" + pre, ofType: "json"),
+            let poddata = try? Data(contentsOf: URL(fileURLWithPath: podfile)),
+            let podjson = try? JSONSerialization.jsonObject(with: poddata, options: []),
+            let podjsonDictionary = podjson as? NSDictionary else {
+                print("Error finding the emoji for the language \(pre)")
+                return [:]
+        }
+        return podjsonDictionary
     }
 }
