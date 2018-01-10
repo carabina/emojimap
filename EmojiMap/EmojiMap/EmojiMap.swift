@@ -109,21 +109,13 @@ public class EmojiMap {
         pre = "-" + pre
         
         // Search for file in main bundle
-        if let file = Bundle.main.url(forResource: "emojis" + pre, withExtension: "json"),
-            let data = try? Data(contentsOf: file),
+        guard let file = Bundle(for: EmojiMap.self).path(forResource: "EmojiDataBase.bundle/emojis" + pre, ofType: "json"),
+            let data = try? Data(contentsOf: URL(fileURLWithPath: file)),
             let json = try? JSONSerialization.jsonObject(with: data, options: []),
-            let jsonDictionary = json as? NSDictionary {
-            return jsonDictionary
-        }
-
-        // Search for file in pod bundle
-        guard let podfile = Bundle(for: EmojiMap.self).path(forResource: "Emojimap.bundle/emojis" + pre, ofType: "json"),
-            let poddata = try? Data(contentsOf: URL(fileURLWithPath: podfile)),
-            let podjson = try? JSONSerialization.jsonObject(with: poddata, options: []),
-            let podjsonDictionary = podjson as? NSDictionary else {
+            let jsonDictionary = json as? NSDictionary else {
                 print("Error finding the emoji for the language \(pre)")
                 return [:]
         }
-        return podjsonDictionary
+        return jsonDictionary
     }
 }

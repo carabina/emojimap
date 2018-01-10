@@ -15,7 +15,7 @@ This fantastic library allow you to map strings to emojis, similar to the iOS ke
   s.ios.deployment_target = '10.0'
   s.source_files = 'Emojimap/EmojiMap/*{swift}'
   s.resource_bundles = {
-    'Emojimap' => ['Emojimap/EmojiMap/EmojiMap.bundle/*{json}']
+    'Emojimap' => ['Emojimap/EmojiMap/EmojiDataBase.bundle/*{json}']
   }
 
 end
