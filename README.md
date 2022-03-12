@@ -35,7 +35,7 @@ pod 'Emojimap'
 
 #### Manually
 1. Download and drop ```EmojiMap.swift``` in your project.
-2. Download and drop ```emojis-es.json```, ```emojis-en.json```, ```emojis-fr.json```, ```emojis-de.json``` in your project.
+2. Download and drop ```emojis-es.json```, ```emojis-en.json```, ```emojis-fr.json```, ```emojis-de.json```, ```emojis-pt.json``` in your project.
 2. Congratulations!  
 
 ## 🚀 Usage example
